@@ -2,7 +2,9 @@ FROM ubuntu:18.04
 MAINTAINER Baudouin Léo <baudouin.leo@gmail.com>
 ENV DEBIAN_FRONTEND noninteractive
 
-RUN apt-get update -q && apt-get install -qy \
+RUN apt-get update
+RUN apt-get install -y git
+RUN apt-get install -y \
 	asymptote \
 	biber \
 	chktex \
@@ -67,8 +69,7 @@ RUN apt-get update -q && apt-get install -qy \
 	texlive-xetex \
 	tipa \
 	vprerex \
-	--no-install-recommends \
-	&& rm -rf /var/lib/apt/lists/*
+	--no-install-recommends
 
 WORKDIR /data
 VOLUME ["/data"]
